@@ -11,8 +11,12 @@ public class GameManager : MonoBehaviour
     public static GameManager gameManager;
     public static Scene currentScene;
     public static int gameManagerCount = 0;
-    public float health;
-    public float experience;
+    public int health;
+    public int experience;
+    public int shield;
+    public int level;
+    public int gold;
+    public int score;
 
     private void Awake()
     {
@@ -30,8 +34,13 @@ public class GameManager : MonoBehaviour
     private void OnGUI()
     {
         GUI.Label(new Rect(10, 10, 100, 30), "Health: " + health);
-        GUI.Label(new Rect(10, 40, 100, 30), "Experience: " + experience);
-        GUI.Label(new Rect(10, 70, 100, 30), "Game Manager Count: " + gameManagerCount);
+        GUI.Label(new Rect(10, 70, 100, 30), "Level: " + level);
+        GUI.Label(new Rect(10, 100, 100, 30), "Experience: " + experience);
+        GUI.Label(new Rect(10, 130, 100, 30), "Gold: " + gold);
+        GUI.Label(new Rect(10, 160, 100, 30), "Score: " + score);
+        GUI.Label(new Rect(10, 40, 150, 30), "Shield: " + shield);
+        GUI.Label(new Rect(10, 190, 150, 30), "Game Managers: " + gameManagerCount);
+
     }
 
     public void Save()
@@ -42,6 +51,10 @@ public class GameManager : MonoBehaviour
         PlayerData data = new PlayerData();
         data.health = health;
         data.experience = experience;
+        data.shield = shield;
+        data.level = level;
+        data.gold = gold;
+        data.score = score;
         data.scene = currentScene.buildIndex;
 
         bf.Serialize(file, data);
@@ -59,6 +72,10 @@ public class GameManager : MonoBehaviour
 
             health = data.health;
             experience = data.experience;
+            shield = data.shield;
+            level = data.level;
+            gold = data.gold;
+            score = data.score;
             SceneManager.LoadScene(data.scene);
         }
     }
@@ -79,7 +96,11 @@ public class GameManager : MonoBehaviour
 
 [Serializable]
 class PlayerData {
-    public float health;
-    public float experience;
+    public int health;
+    public int experience;
+    public int shield;
+    public int level;
+    public int gold;
+    public int score;
     public int scene;
 }
