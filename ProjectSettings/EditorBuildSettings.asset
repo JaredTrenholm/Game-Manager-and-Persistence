@@ -6,12 +6,24 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
+    path: Assets/Scenes/Main Menu.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
-    path: Assets/Scenes/Scene 2.unity
+    path: Assets/Scenes/Level One.unity
     guid: dad487b1df1846140b5c2cd210c87ebc
   - enabled: 1
-    path: Assets/Scenes/Scene 3.unity
+    path: Assets/Scenes/Level Two.unity
     guid: a17fb93fa4067cb479899018e21b1ed7
+  - enabled: 1
+    path: Assets/Scenes/Level Three.unity
+    guid: 2b3627ccc6e5e7646b648b55c4c788f5
+  - enabled: 1
+    path: Assets/Scenes/Shop.unity
+    guid: 0abbc47c92582544c9c464a38cca6cfd
+  - enabled: 1
+    path: Assets/Scenes/Victory.unity
+    guid: ee415fd69b4ae394fb5023504631de7e
+  - enabled: 1
+    path: Assets/Scenes/Defeat.unity
+    guid: 75ca6a673b3ede44da3feddee4d62402
   m_configObjects: {}
