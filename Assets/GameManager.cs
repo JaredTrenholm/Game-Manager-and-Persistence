@@ -1,10 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using System;
-using System.Runtime.Serialization.Formatters.Binary;
-using System.IO;
 
 public class GameManager : MonoBehaviour
 {
@@ -17,16 +15,21 @@ public class GameManager : MonoBehaviour
     public int level;
     public int gold;
     public int score;
+    public static int gameManagerAttempts;
+
 
     private void Awake()
     {
         currentScene = SceneManager.GetActiveScene();
+        gameManagerAttempts += 1;
         if (gameManager == null)
         {
             DontDestroyOnLoad(this.gameObject);
             gameManager = this;
             gameManagerCount += 1;
-        } else if (gameManager != this.gameObject){
+        }
+        else if (gameManager != this.gameObject)
+        {
             Destroy(this.gameObject);
         }
     }
@@ -40,6 +43,7 @@ public class GameManager : MonoBehaviour
         GUI.Label(new Rect(10, 160, 100, 30), "Score: " + score);
         GUI.Label(new Rect(10, 40, 150, 30), "Shield: " + shield);
         GUI.Label(new Rect(10, 190, 150, 30), "Game Managers: " + gameManagerCount);
+        GUI.Label(new Rect(10, 220, 150, 60), "Game Managers Load Attempts: " + gameManagerAttempts);
 
     }
 
@@ -77,6 +81,7 @@ public class GameManager : MonoBehaviour
             gold = data.gold;
             score = data.score;
             SceneManager.LoadScene(data.scene);
+            
         }
     }
     public bool CanLoad()
